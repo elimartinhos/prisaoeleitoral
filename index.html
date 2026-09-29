@@ -76,7 +76,6 @@
             40%, 60% { transform: translate3d(7px, 0, 0); }
         }
 
-        /* Custom Scrollbar for Dossiers */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -151,7 +150,7 @@
             </div>
         </div>
 
-        <!-- Canvas & Desk Interface Container -->
+        <!-- Canvas Container -->
         <div id="game-wrapper" class="w-full relative rounded-b-2xl overflow-hidden border border-slate-800 bg-slate-900">
             <canvas id="gameCanvas" width="700" height="490" class="w-full h-auto"></canvas>
 
@@ -170,14 +169,13 @@
                     🏛️
                 </div>
                 <h2 class="text-2xl sm:text-3xl font-black text-amber-400 mb-1 tracking-tight">PLANTÃO DE POLÍCIA ELEITORAL</h2>
-                <p class="text-xs text-amber-200/90 font-bold mb-4 uppercase tracking-wider">Simulador de Análise Jurídica e Decisão de Prisão</p>
+                <p class="text-xs text-amber-200/90 font-bold mb-4 uppercase tracking-wider">Simulador de Análise Jurídica • 100 Ocorrências Únicas</p>
                 
                 <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 text-left text-xs text-slate-300 space-y-2.5 max-w-md mb-6 leading-relaxed">
-                    <p class="font-semibold text-slate-200 border-b border-slate-800 pb-1">📋 <strong>Instruções de Plantão:</strong></p>
-                    <p>• Você receberá relatórios e depoimentos trazidos pela Polícia Militar e Agentes.</p>
-                    <p>• <strong>Análise Dedutiva:</strong> Os relatórios <strong class="text-amber-400">NÃO contêm títulos ou respostas prontas</strong>. Você deve deduzir os fatos do texto.</p>
-                    <p>• <strong class="text-red-400">DEVE PRENDER:</strong> Flagrante delito imediato/perseguição, crimes inafiançáveis (condenação definitiva por racismo, homicídio, tráfico) ou desrespeito a salvo-conduto.</p>
-                    <p>• <strong class="text-emerald-400">DEVE LIBERAR:</strong> Mandados de prisão preventiva/temporária antigos, prisão civil (pensão) ou suspeitas sem flagrante (Art. 236 CE).</p>
+                    <p class="font-semibold text-slate-200 border-b border-slate-800 pb-1">📋 <strong>Regras do Plantão (Art. 236 do Código Eleitoral):</strong></p>
+                    <p>• Leia atentamente os relatórios. As situações exigem atenção aos detalhes técnicos do Direito Processual e Eleitoral.</p>
+                    <p>• <strong class="text-red-400">DEVE PRENDER SE:</strong> For Prisão em Flagrante Delito (comum ou eleitoral), Sentença Condenatória Transitada em Julgado por Crime Inafiançável, ou Desrespeito a Salvo-Conduto.</p>
+                    <p>• <strong class="text-emerald-400">DEVE LIBERAR SE:</strong> For Prisão Preventiva ou Temporária, Prisão Civil (pensão alimentícia), Sentença por Crime Fiançável, ou MERA SUSPEITA sem flagrante.</p>
                     <p class="text-amber-400 text-[11px] font-semibold pt-1">
                         ⚠️ 3 erros perante a Corregedoria encerram seu plantão!
                     </p>
@@ -195,7 +193,7 @@
                 </div>
                 <h2 class="text-2xl sm:text-3xl font-black text-red-500 mb-1 uppercase tracking-tight">AFASTADO PELA CORREGEDORIA</h2>
                 <p id="gameover-reason" class="text-xs text-red-300 font-semibold mb-4 bg-red-950/80 px-3 py-2 rounded-lg border border-red-800/60 max-w-md">
-                    Você cometeu 3 infrações de Abuso de Autoridade ou Omissão de Dever Funcional!
+                    Você cometeu 3 infrações graves por Prisão Ilegal ou Omissão de Dever Funcional!
                 </p>
                 
                 <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 w-full max-w-xs mb-5 space-y-2">
@@ -204,7 +202,7 @@
                         <span id="final-score" class="text-2xl font-black text-amber-400">0</span>
                     </div>
                     <div class="flex justify-between items-center">
-                        <span class="text-xs text-slate-400 uppercase font-bold">Casos Resolvidos</span>
+                        <span class="text-xs text-slate-400 uppercase font-bold">Casos Analisados</span>
                         <span id="final-cases" class="text-base font-bold text-slate-200">0</span>
                     </div>
                 </div>
@@ -215,16 +213,16 @@
             </div>
         </div>
 
-        <!-- Action Decision Controls -->
+        <!-- Action Controls -->
         <div class="w-full flex gap-3 mt-3">
             <button id="btn-arrest" class="flex-1 py-4 bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 active:scale-95 text-white font-black text-base sm:text-lg rounded-xl shadow-lg shadow-red-900/40 border border-red-500/30 transition-all flex flex-col items-center justify-center">
                 <span class="flex items-center gap-1.5">🚨 EFETUAR PRISÃO</span>
-                <span class="text-[10px] font-semibold text-red-200/80 uppercase">Teclado: [ ESPAÇO ] ou [ A ]</span>
+                <span class="text-[10px] font-semibold text-red-200/80 uppercase">Teclado: [ A ] ou [ ESPAÇO ]</span>
             </button>
 
             <button id="btn-release" class="flex-1 py-4 bg-gradient-to-r from-emerald-600 to-green-700 hover:from-emerald-500 hover:to-green-600 active:scale-95 text-white font-black text-base sm:text-lg rounded-xl shadow-lg shadow-emerald-900/40 border border-emerald-500/30 transition-all flex flex-col items-center justify-center">
                 <span class="flex items-center gap-1.5">✅ LIBERAR / RELAXAR</span>
-                <span class="text-[10px] font-semibold text-emerald-200/80 uppercase">Teclado: [ ENTER ] ou [ D ]</span>
+                <span class="text-[10px] font-semibold text-emerald-200/80 uppercase">Teclado: [ D ] ou [ ENTER ]</span>
             </button>
         </div>
     </main>
@@ -239,45 +237,42 @@
                 <span class="text-3xl">⚖️</span>
                 <div>
                     <h3 class="text-lg font-bold text-amber-400 uppercase tracking-wide">Código Eleitoral (Lei nº 4.737/65)</h3>
-                    <p class="text-xs text-slate-400">Guia de Imunidade e Exceções de Prisão</p>
+                    <p class="text-xs text-slate-400">Guia Jurídico do Período de Imunidade Eleitoral</p>
                 </div>
             </div>
             
             <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
                 <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
-                    <p class="font-semibold text-amber-300 mb-1">Artigo 236 - A Regra de Ouro:</p>
-                    <p><em>"Nenhuma autoridade poderá prender ou detiver qualquer eleitor desde 5 (cinco) dias antes e até 48 (quarenta e oito) horas depois do encerramento da eleição..."</em></p>
+                    <p class="font-semibold text-amber-300 mb-1">Artigo 236 do Código Eleitoral:</p>
+                    <p><em>"Nenhuma autoridade poderá prender ou detiver qualquer eleitor desde 5 (cinco) dias antes e até 48 (quarenta e oito) horas depois do encerramento da eleição, salvo em flagrante delito ou em virtude de sentença criminal condenatória por crime inafiançável, ou, ainda, por desrespeito a salvo-conduto."</em></p>
                 </div>
 
                 <div class="space-y-2">
                     <h4 class="font-extrabold text-red-400 text-xs uppercase flex items-center gap-1">
-                        <span>🚨</span> Exceções em que a Prisão É OBRIGATÓRIA:
+                        <span>🚨</span> Quando a Prisão É OBRIGATÓRIA (Exceções Legais):
                     </h4>
                     <ul class="list-disc pl-4 space-y-1 text-slate-300">
-                        <li><strong>Flagrante Delito:</strong> Pego cometendo a infração, acabado de cometer ou perseguido/encontrado logo após com instrumentos/armas do crime.</li>
-                        <li><strong>Sentença Condenatória por Crime Inafiançável:</strong> Racismo, Tortura, Tráfico, Homicídio Qualificado, Crimes Hediondos com trânsito em julgado.</li>
-                        <li><strong>Desrespeito a Salvo-Conduto:</strong> Impedir ou coagir eleitor com salvo-conduto expedido pelo Juiz Eleitoral.</li>
+                        <li><strong>Flagrante Delito:</strong> Pego no momento do crime, acabado de cometer, perseguido em seguida ou encontrado com armas/objetos do ilícito.</li>
+                        <li><strong>Sentença por Crime Inafiançável:</strong> Condenação com Trânsito em Julgado (definitiva) por Racismo, Tortura, Tráfico, Homicídio Qualificado ou Crimes Hediondos.</li>
+                        <li><strong>Desrespeito a Salvo-Conduto:</strong> Impedir ou coagir eleitor protegido por ordem do Juiz Eleitoral.</li>
                     </ul>
                 </div>
 
                 <div class="space-y-2">
                     <h4 class="font-extrabold text-emerald-400 text-xs uppercase flex items-center gap-1">
-                        <span>📜</span> Casos em que a Prisão É PROIBIDA (LIBERAR):
+                        <span>📜</span> Quando a Prisão É PROIBIDA (Deve LIBERAR):
                     </h4>
                     <ul class="list-disc pl-4 space-y-1 text-slate-300">
-                        <li><strong>Mandados Pré-existentes:</strong> Prisão Preventiva ou Temporária decretadas dias/semanas antes ficam suspensas!</li>
+                        <li><strong>Prisões Cautelares Antigas:</strong> Mandados de Prisão Preventiva ou Temporária ficam suspensos.</li>
                         <li><strong>Prisão Civil:</strong> Dívida de pensão alimentícia.</li>
-                        <li><strong>Merda Suspeita ou Denúncia Sem Flagrante:</strong> Apenas investigação ou depoimentos sem flagrante no ato.</li>
+                        <li><strong>Sentença por Crime Fiançável:</strong> Furto simples, injúria, estelionato (mesmo com trânsito em julgado, pois não é inafiançável).</li>
+                        <li><strong>Mera Suspeita / Inquérito / Sem Flagrante:</strong> Denúncias sem prisão em flagrante no ato.</li>
                     </ul>
-                </div>
-
-                <div class="bg-red-950/50 p-3 rounded-xl border border-red-900/50 text-red-200">
-                    <strong class="text-red-400">Art. 298 CE:</strong> Efetuar prisão fora das exceções é Crime Eleitoral punível com reclusão e perda do cargo!
                 </div>
             </div>
 
             <button id="btn-modal-ok" class="w-full mt-5 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-xl uppercase tracking-wider transition-colors">
-                Compreendido
+                Entendido
             </button>
         </div>
     </div>
@@ -349,162 +344,818 @@
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
 
-        // 100 Scenarios Generator / Database
+        // COMPLETE 100 UNIQUE & DETAILED SCENARIOS
         const SCENARIOS = [
             {
                 id: 1,
                 person: 'Gerson da Silva',
                 avatar: '👨‍💼',
-                report: 'A guarnição encontrou o suspeito há 10 minutos correndo da agência bancária com uma mochila cheia de notas de 100 e um pé de cabra, após o alarme do banco disparar na madrugada de sexta-feira antes da votação.',
+                report: 'Conduzido pela PM após ser interceptado a duas quadras de uma agência bancária, carregando uma mochila com R$ 80 mil e pé de cabra, 15 minutos após o alarme do banco disparar de madrugada.',
                 shouldArrest: true,
-                reason: 'Trata-se de flagrante delito (Art. 302 do CPP c/c Art. 236 do Código Eleitoral). O flagrante é exceção expressa à imunidade eleitoral.'
+                reason: 'Flagrante delito presumido (Art. 302, IV, do CPP). O flagrante é exceção expressa à imunidade eleitoral (Art. 236 do CE).'
             },
             {
                 id: 2,
                 person: 'Marcelo Pires',
                 avatar: '🧔‍♂️',
-                report: 'Os agentes abordaram o indivíduo após checarem seu CPF na blitz de rotina. Consta no sistema um mandado de prisão preventiva expedido pelo juiz criminal há 3 semanas por furto qualificado.',
+                report: 'Abordado em blitz de rotina. A consulta ao sistema BNMP revelou um Mandado de Prisão Preventiva expedido há 3 semanas referente a processo de roubo majorado.',
                 shouldArrest: false,
-                reason: 'Mandados de prisão preventiva antigos ficam com a execução suspensa durante o período de imunidade eleitoral (5 dias antes até 48h pós-eleição).'
+                reason: 'Prisões preventivas não podem ser executadas no período de imunidade eleitoral (Art. 236 do CE). Deve ser liberado.'
             },
             {
                 id: 3,
                 person: 'Roberto Alves',
                 avatar: '👴',
-                report: 'Policiais militares apresentaram o cidadão conduzido por ter um mandado de prisão civil por inadimplemento de pensão alimentícia expedido pela Vara de Família há 2 meses.',
+                report: 'Apresentado à delegacia por policiais militares em razão de mandado de prisão civil por inadimplemento de pensão alimentícia decretado pela Vara de Família.',
                 shouldArrest: false,
-                reason: 'Prisões civis por dívida de pensão alimentícia não podem ser executadas no período de imunidade eleitoral (Art. 236 do Código Eleitoral).'
+                reason: 'A imunidade eleitoral impede a execução de prisão civil por dívida alimentícia durante o período protegido.'
             },
             {
                 id: 4,
                 person: 'Claudio "O Bruxo"',
                 avatar: '🥷',
-                report: 'O conduzido foi detido por populares e entregue à viatura logo após desferir um golpe de faca em um comerciante durante uma briga em uma padaria do bairro.',
+                report: 'Contido por clientes de uma lanchonete e entregue à viatura logo após desferir golpe de faca contra o atendente no decorrer de uma discussão.',
                 shouldArrest: true,
-                reason: 'Prisão em flagrante delito por tentativa de homicídio/lesão. Flagrantes autorizam a custódia imediata em qualquer dia do período eleitoral.'
+                reason: 'Flagrante delito próprio de tentativa de homicídio/lesão grave. Autoriza prisão imediata.'
             },
             {
                 id: 5,
                 person: 'Renato Mendonça',
                 avatar: '👨‍🔧',
-                report: 'O motorista apresentou-se com uma consulta que indica condenação definitiva transitada em julgado por Crime de Racismo (inafiançável), com mandado de prisão de captura definitivo expedido.',
+                report: 'Conduzido após verificação de mandado de prisão para execução definitiva decorrente de Sentença Condenatória Transitada em Julgado por Crime de Racismo.',
                 shouldArrest: true,
-                reason: 'Sentença condenatória por crime inafiançável (Racismo) é uma das exceções legais previstas no Art. 236 que exigem a prisão imediata.'
+                reason: 'Condenação definitiva (trânsito em julgado) por crime inafiançável (Racismo - Art. 5º, XLII, CF) é exceção expressa que exige cumprimento.'
             },
             {
                 id: 6,
                 person: 'Sérgio Nogueira',
                 avatar: '👨‍💼',
-                report: 'Uma testemunha alega que Sérgio furtou seu telefone celular ontem à noite dentro de um bar. O suspeito nega e não foi encontrado nada com ele durante a revista policial.',
+                report: 'Vítima esteve no plantão alegando que Sérgio subtraiu seu celular em uma festa ontem à noite. A PM localizou Sérgio em casa hoje; ele nega e nenhum objeto foi encontrado.',
                 shouldArrest: false,
-                reason: 'Não há situação de flagrante delito nem mandado de exceção inafiançável. A apuração deve ocorrer por inquérito sem prisão durante o período eleitoral.'
+                reason: 'Não há situação de flagrante nem ordem judicial inafiançável. A apuração deve ocorrer por inquérito policial com o investigado em liberdade.'
             },
             {
                 id: 7,
-                person: 'Juliana Costa',
-                avatar: '👩‍💼',
-                report: 'Juliana foi abordada portando uma certidão de Salvo-Conduto expedida pela Justiça Eleitoral. Um cabo da PM tentou impedri-la de circular até o cartório eleitoral com ameaças.',
+                person: 'Cabo Valdir Ramos',
+                avatar: '👮‍♂️',
+                report: 'Policial militar conduzido por ter ameaçado e impedido fisicamente a eleitora Juliana de votar, ignorando o Salvo-Conduto formalmente expedido pelo Juiz Eleitoral.',
                 shouldArrest: true,
-                reportOfficer: 'A guarda trouxe o Cabo que desrespeitou e tentou impedir o cumprimento do Salvo-Conduto da cidadã.',
-                reason: 'O desrespeito ao Salvo-Conduto expedido pela Justiça Eleitoral configura infração gravíssima e exceção autorizadora de prisão imediata (Art. 236).'
+                reason: 'Desrespeitar ou coagir portador de Salvo-Conduto expedido pela Justiça Eleitoral constitui exceção legal expressa no Art. 236 do CE.'
             },
             {
                 id: 8,
                 person: 'Lucas Meireles',
                 avatar: '👨‍🎓',
-                report: 'A patrulha avistou o jovem arremessando pedras na fachada do comitê adversário e quebrando as vidraças na presença da equipe policial.',
+                report: 'Surpreendido pela guarnição enquanto arremessava pedras e quebrava as janelas do comitê partidário adversário na véspera da eleição.',
                 shouldArrest: true,
-                reason: 'Crime de dano praticado no momento da presença policial constitui flagrante delito, autorizando a lavratura do auto de prisão.'
+                reason: 'Prisão em flagrante delito por crime de dano ao patrimônio no momento da execução do ato.'
             },
             {
                 id: 9,
                 person: 'Fernando Rocha',
                 avatar: '👨‍🌾',
-                report: 'O fazendeiro responde a uma investigação de estelionato. Os policiais receberam a informação de que ele estava no centro da cidade e o trouxeram com base no inquérito aberto mês passado.',
+                report: 'Conduzido à delegacia porque responde a Inquérito Policial por estelionato agropecuário instaurado há dois meses na comarca vizinha.',
                 shouldArrest: false,
-                reason: 'Investigações prévias e meras denúncias sem flagrante ou sem sentença inafiançável definitiva proíbem a detenção no período eleitoral.'
+                reason: 'Inquérito pendente ou simples condição de indiciado não autoriza detenção durante a garantia da imunidade eleitoral.'
             },
             {
                 id: 10,
                 person: 'Eduardo Fontes',
                 avatar: '👨‍💻',
-                report: 'O acusado foi localizado e abordado após intensa perseguição ininterrupta da polícia iniciada logo após o roubo de um veículo em uma avenida movimentada.',
+                report: 'Localizado por agentes da Polícia Civil após perseguição ininterrupta iniciada logo após o roubo a mão armada de um veículo no centro da cidade.',
                 shouldArrest: true,
-                reason: 'Perseguição ininterrupta logo após o crime configura flagrante impróprio/improperio (Art. 302, III, CPP), plenamente válido na semana eleitoral.'
+                reason: 'Flagrante impróprio caracterizado pela perseguição imediata e ininterrupta (Art. 302, III, CPP).'
+            },
+            {
+                id: 11,
+                person: 'Juliana Camargo',
+                avatar: '👩‍💼',
+                report: 'Conduzida por estar com Mandado de Prisão Temporária (prazo de 5 dias) expedido pela Vara Criminal para investigações de fraude financeira.',
+                shouldArrest: false,
+                reason: 'Prisão Temporária é modalidade cautelar e não pode ser executada no período de imunidade eleitoral.'
+            },
+            {
+                id: 12,
+                person: 'Ailton Senna de Castro',
+                avatar: '🧔‍♂️',
+                report: 'Abordado e conduzido por apresentar ordem de prisão definitiva decorrente de Sentença Transitada em Julgado pelo crime de Tráfico Ilícito de Entorpecentes.',
+                shouldArrest: true,
+                reason: 'O Tráfico de Drogas é crime inafiançável e a condenação é definitiva (transitada em julgado), enquadrando-se na exceção legal.'
+            },
+            {
+                id: 13,
+                person: 'Márcio Guimarães',
+                avatar: '👨‍💼',
+                report: 'Apresentado por estar com Mandado de Prisão Preventiva por Crime Hediondo (Homicídio Qualificado) expedido há 2 meses.',
+                shouldArrest: false,
+                reason: 'Atenção: Trata-se de Prisão Preventiva (cautelar), e não de condenação definitiva! Mandados preventivos não podem ser cumpridos no período.'
+            },
+            {
+                id: 14,
+                person: 'Beatriz Vasconcelos',
+                avatar: '👩‍🔬',
+                report: 'Pega em flagrante dentro da seção eleitoral tentando colar adesivos partidários nas telas das urnas eletrônicas com adesivo instantâneo.',
+                shouldArrest: true,
+                reason: 'Flagrante delito praticado no ato contra o patrimônio público e o processo eleitoral.'
+            },
+            {
+                id: 15,
+                person: 'Carlos Eduardo',
+                avatar: '👨‍🔧',
+                report: 'Trabalhador abordado com R$ 3.000 em espécie e dezenas de santinhos no bolso. Alega que sacou o salário e que pegou os papéis na rua. Nenhuma testemunha relatou oferta de voto.',
+                shouldArrest: false,
+                reason: 'Mera posse de dinheiro e panfletos sem demonstração do ato de compra de voto no momento não configura flagrante delito. Deve ser liberado e apurado em inquérito.'
+            },
+            {
+                id: 16,
+                person: 'Danilo Fragoso',
+                avatar: '👨‍🌾',
+                report: 'Flagrado por agentes de fiscalização entregando notas de R$ 100 para eleitores na fila de votação enquanto dizia "vota no candidato 55".',
+                shouldArrest: true,
+                reason: 'Flagrante delito do crime de corrupção eleitoral (compra de voto - Art. 299 do Código Eleitoral).'
+            },
+            {
+                id: 17,
+                person: 'Eliane Martins',
+                avatar: '👩‍🏫',
+                report: 'Conduzida por policiais militares sob acusação de ter praticado boca de urna há duas horas em colégio distante. Quando abordada, caminhava sozinha sem panfletos.',
+                shouldArrest: false,
+                reason: 'A suposta infração ocorreu há horas e não há perseguição nem flagrante no ato. Exige instauração de inquérito sem prisão.'
+            },
+            {
+                id: 18,
+                person: 'Fabiano Toledo',
+                avatar: '👨‍🎨',
+                report: 'Flagrado por patrulha pichando o muro do cartório eleitoral com ofensas aos juízes na madrugada de sábado antes do pleito.',
+                shouldArrest: true,
+                reason: 'Flagrante delito no momento da execução do crime de pichação/dano.'
+            },
+            {
+                id: 19,
+                person: 'Gustavo Henrique',
+                avatar: '👨‍💻',
+                report: 'Abordado com Mandado de Prisão decorrente de Sentença Condenatória Transitada em Julgado pelo crime de Furto Simples (Art. 155, caput, CP).',
+                shouldArrest: false,
+                reason: 'Atenção jurídica: Furto simples é crime FIANÇÁVEL. A exceção do Art. 236 exige que a sentença definitiva seja por crime INAFIANÇÁVEL.'
+            },
+            {
+                id: 20,
+                person: 'Helena Amaral',
+                avatar: '👵',
+                report: 'Conduzida por mandado de intimação para depor como testemunha em inquérito que apura lavagem de dinheiro. Recusou-se a ir voluntariamente.',
+                shouldArrest: false,
+                reason: 'Testemunha não pode ser presa ou detida no período de imunidade eleitoral.'
+            },
+            {
+                id: 21,
+                person: 'Igor Siqueira',
+                avatar: '🧔‍♂️',
+                report: 'Preso por populares e entregue à polícia após agredir fisicamente um mesário que solicitou seu documento de identificação na seção.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de lesão corporal/vias de fato praticado no ato.'
+            },
+            {
+                id: 22,
+                person: 'Joana Prado',
+                avatar: '👩‍💼',
+                report: 'Conduzida por ter contra si Mandado de Prisão Preventiva por estelionato e associação criminosa expedido pela Justiça Federal.',
+                shouldArrest: false,
+                reason: 'Mandado cautelar de Prisão Preventiva fica suspenso durante o período de imunidade.'
+            },
+            {
+                id: 23,
+                person: 'Kléber Mendonça',
+                avatar: '👨‍🏭',
+                report: 'Conduzido com mandado de prisão por execução definitiva (trânsito em julgado) pelo crime inafiançável de Tortura (Lei nº 9.455/97).',
+                shouldArrest: true,
+                reason: 'Crime inafiançável por determinação constitucional com condenação definitiva transitada em julgado.'
+            },
+            {
+                id: 24,
+                person: 'Leticia Dornelles',
+                avatar: '👩‍🎓',
+                report: 'Apresentada por ter arremessado uma pedra contra o paratrabrisa da viatura policial durante uma carreata eleitoral no centro.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de dano qualificado ao patrimônio público.'
+            },
+            {
+                id: 25,
+                person: 'Maurício Farias',
+                avatar: '👨‍💼',
+                report: 'Empresário abordado em seu veículo com santinhos no porta-malas. Afirma que é material sobressalente da campanha de seu irmão que sobrou.',
+                shouldArrest: false,
+                reason: 'O simples transporte de material gráfico sem distribuição vedada no momento não constitui flagrante delito.'
+            },
+            {
+                id: 26,
+                person: 'Nádia Silveira',
+                avatar: '👩‍💼',
+                report: 'Detida no momento em que usava alto-falantes e amplificadores de som a 30 metros de uma seção eleitoral no dia da votação.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de crime eleitoral (uso de alto-falantes no dia da eleição - Art. 39, § 5º, I, Lei 9.504/97).'
+            },
+            {
+                id: 27,
+                person: 'Otávio Mesquita',
+                avatar: '👨‍🌾',
+                report: 'Conduzido por possuir Mandado de Prisão Temporária expedido no âmbito da Operação de combate a crimes ambientais.',
+                shouldArrest: false,
+                reason: 'Prisão temporária é modalidade cautelar e não pode ser executada no período eleitoral.'
+            },
+            {
+                id: 28,
+                person: 'Patricia Abravanel',
+                avatar: '👩‍💼',
+                report: 'Vizinho acionou a polícia afirmando que Patrícia estaria com objetos furtados de uma loja na semana passada. Ela autorizou a entrada e nada foi achado.',
+                shouldArrest: false,
+                reason: 'Ausência de flagrante e ausência de mandado. Não há fundamentação legal para prisão.'
+            },
+            {
+                id: 29,
+                person: 'Quintino Bocaiúva',
+                avatar: '👴',
+                report: 'Preso em flagrante enquanto ameaçava eleitores com um revólver numerações raspada na entrada do local de votação.',
+                shouldArrest: true,
+                reason: 'Flagrante delito por porte ilegal de arma de fogo de uso restrito e coação.'
+            },
+            {
+                id: 30,
+                person: 'Rafaela Bastos',
+                avatar: '👩‍⚕️',
+                report: 'Apresentada pela guarnição com Mandado de Prisão Preventiva decorrente de investigação de furto mediante fraude.',
+                shouldArrest: false,
+                reason: 'Prisão preventiva não se enquadra nas exceções do Art. 236 do Código Eleitoral.'
+            },
+            {
+                id: 31,
+                person: 'Samuel Goldstein',
+                avatar: '👨‍💼',
+                report: 'Conduzido após verificação de Mandado de Prisão por execução definitiva (Trânsito em Julgado) pelo crime de Homicídio Qualificado (Inafiançável).',
+                shouldArrest: true,
+                reason: 'Sentença condenatória transitada em julgado por crime inafiançável (Homicídio Qualificado/Hediondo).'
+            },
+            {
+                id: 32,
+                person: 'Tatiana Moura',
+                avatar: '👩‍⚖️',
+                report: 'Acusada por um fiscal partidário de ter oferecido R$ 50 para um eleitor ontem à noite. Tatiana nega o fato e não há gravações ou testemunhas presenciais.',
+                shouldArrest: false,
+                reason: 'Ausência de flagrante delito no momento da abordagem. Exige instauração de inquérito regular.'
+            },
+            {
+                id: 33,
+                person: 'Ubiratan Lemos',
+                avatar: '🧔‍♂️',
+                report: 'Surpreendido no momento em que furtava a carteira do bolso de um idoso dentro do transporte público que levava eleitores.',
+                shouldArrest: true,
+                reason: 'Prisão em flagrante delito por furto.'
+            },
+            {
+                id: 34,
+                person: 'Vanessa Camargo',
+                avatar: '👩‍🎤',
+                report: 'Conduzida devido a mandado de Prisão Civil decretado por inadimplência de pensão alimentícia judicial.',
+                shouldArrest: false,
+                reason: 'Prisão civil não é permitida no período de imunidade eleitoral.'
+            },
+            {
+                id: 35,
+                person: 'Wagner Montes',
+                avatar: '👨‍💼',
+                report: 'Encontrado a 100 metros do local onde um caixa eletrônico fora explodido há 10 minutos, portando maços de nota queimadas e estilhaços de dinamite no casaco.',
+                shouldArrest: true,
+                reason: 'Flagrante delito presumido (Art. 302, IV, CPP). Autoriza a lavratura da prisão.'
+            },
+            {
+                id: 36,
+                person: 'Xavier de Toledo',
+                avatar: '👨‍🎨',
+                report: 'Conduzido por ter Mandado de Prisão Preventiva em aberto expedido há 6 meses por crime ambiental.',
+                shouldArrest: false,
+                reason: 'Mandado de prisão preventiva suspenso pela imunidade eleitoral.'
+            },
+            {
+                id: 37,
+                person: 'Yara Flor',
+                avatar: '👩‍🌾',
+                report: 'Pegando carona no transporte escolar gratuito e distribuindo panfletos de candidato a prefeito aos passageiros no momento da abordagem policial.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de ilícito eleitoral/propaganda irregular e uso de bem público no dia do pleito.'
+            },
+            {
+                id: 38,
+                person: 'Zaqueu de Lima',
+                avatar: '👨‍🔧',
+                report: 'O conduzido possui Mandado de Prisão Definitiva (Trânsito em Julgado) por crime de Injúria Racial (equiparado a Racismo e Inafiançável).',
+                shouldArrest: true,
+                reason: 'Injúria racial equiparada a racismo (STF/Lei 14.532), inafiançável e com sentença definitiva.'
+            },
+            {
+                id: 39,
+                person: 'Adélia Prado',
+                avatar: '👵',
+                report: 'Foi trazida à delegacia por policiais após vizinhos informarem que ela guarda fogos de artifício em casa sem autorização.',
+                shouldArrest: false,
+                reason: 'Mera informação de populares sem situação de flagrante ou mandado válido.'
+            },
+            {
+                id: 40,
+                person: 'Bruno Gagliasso',
+                avatar: '👨‍💼',
+                report: 'Preso em flagrante logo após agredir verbalmente e desferir um soco no presidente da mesa receptora de votos.',
+                shouldArrest: true,
+                reason: 'Flagrante delito por desacato e lesão corporal.'
+            },
+            {
+                id: 41,
+                person: 'Cíntia Dicker',
+                avatar: '👩‍🦰',
+                report: 'Consta no sistema Mandado de Prisão Temporária em inquérito que apura associação para o tráfico de drogas.',
+                shouldArrest: false,
+                reason: 'Prisão Temporária é medida cautelar que fica suspensa no período eleitoral (exceção é apenas para condenação definitiva por crime inafiançável).'
+            },
+            {
+                id: 42,
+                person: 'Diego Hypólito',
+                avatar: '👨‍💼',
+                report: 'Detido após perseguição policial logo após tomar de assalto o celular de uma pedestre com emprego de simulacro de arma de fogo.',
+                shouldArrest: true,
+                reason: 'Flagrante impróprio decorrente de perseguição imediata pós-delito.'
+            },
+            {
+                id: 43,
+                person: 'Elenice Ribeiro',
+                avatar: '👩‍🏫',
+                report: 'Apresentada por ter em seu desfavor sentença condenatória transitada em julgado pelo crime de Calúnia (Fiançável).',
+                shouldArrest: false,
+                reason: 'Calúnia é crime fiançável. Condenações por crimes fiançáveis não autorizam prisão durante a imunidade.'
+            },
+            {
+                id: 44,
+                person: 'Fábio Assunção',
+                avatar: '🧔‍♂️',
+                report: 'Segurança privado conduzido após impedir a entrada do eleitor Marcos que apresentava Salvo-Conduto formal do Juiz Eleitoral garantindo seu direito de votar livre de coação.',
+                shouldArrest: true,
+                reason: 'Desrespeito e descumprimento de Salvo-Conduto expedido por autoridade judiciária eleitoral (Art. 236 do CE).'
+            },
+            {
+                id: 45,
+                person: 'Gisele Bündchen',
+                avatar: '👩‍💼',
+                report: 'Conduzida para averiguação pois estava utilizando vestimentas amareladas próximo ao local de votação. Não distribuía panfletos nem usava alto-falantes.',
+                shouldArrest: false,
+                reason: 'Uso de roupas de determinada cor é manifestação individual e silenciosa autorizada por lei. Ausência total de crime.'
+            },
+            {
+                id: 46,
+                person: 'Hélio de la Peña',
+                avatar: '👨‍💼',
+                report: 'Surpreendido tentando violar o lacre físico de uma urna eletrônica armazenada na sala de apoio antes do início da votação.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de crime eleitoral e dano ao patrimônio público.'
+            },
+            {
+                id: 47,
+                person: 'Isabela Fiorentino',
+                avatar: '👩‍💼',
+                report: 'Possui mandado de Prisão Preventiva decretado por crimes contra o sistema financeiro expedido há um mês.',
+                shouldArrest: false,
+                reason: 'Prisão Preventiva não pode ser cumprida na semana da eleição.'
+            },
+            {
+                id: 48,
+                person: 'Jair Oliveira',
+                avatar: '👨‍🎤',
+                report: 'Condenado por Sentença Definitiva Transitada em Julgado pelo crime de Estupro de Vulnerável (Crime Hediondo e Inafiançável). Order de prisão pendente.',
+                shouldArrest: true,
+                reason: 'Sentença definitiva por crime hediondo/inafiançável autoriza o cumprimento imediato da prisão.'
+            },
+            {
+                id: 49,
+                person: 'Kátia Abreu',
+                avatar: '👩‍🌾',
+                report: 'Denunciada por um eleitor sob alegação de que Kátia teria feito promessa de doação de telhas na semana passada. Não há flagrante no momento.',
+                shouldArrest: false,
+                reason: 'Fato passado sem situação de flagrante delito. Deve ser objeto de investigação formal sem prisão.'
+            },
+            {
+                id: 50,
+                person: 'Luciano Huck',
+                avatar: '👨‍💼',
+                report: 'Pego em flagrante delito enquanto oferecia vale-combustível e dinheiro a motoristas em um posto de gasolina em troca do comprovante de voto.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de compra de voto (Art. 299 CE).'
+            },
+            {
+                id: 51,
+                person: 'Marta Vieira',
+                avatar: '👩‍🌾',
+                report: 'Conduzida por constar contra si mandado de Prisão Civil por dívida alimentar contraída perante a 1ª Vara de Família.',
+                shouldArrest: false,
+                reason: 'Prisão civil por alimentos é vedada no período de imunidade eleitoral.'
+            },
+            {
+                id: 52,
+                person: 'Neymar da Silva',
+                avatar: '🧔‍♂️',
+                report: 'Encontrado por policiais minutos após ter furtado uma bicicleta na frente do colégio eleitoral, com a alicate de corte ainda em suas mãos.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de furto qualificado (Art. 302, IV, CPP).'
+            },
+            {
+                id: 53,
+                person: 'Olívia Palito',
+                avatar: '👩‍💼',
+                report: 'Possui contra si Mandado de Prisão Preventiva por acusação de furto mediante fraude ocorrido no ano anterior.',
+                shouldArrest: false,
+                reason: 'Prisão Preventiva deve ter sua execução postergada para após o período de imunidade.'
+            },
+            {
+                id: 54,
+                person: 'Pedro Bial',
+                avatar: '👨‍💼',
+                report: 'Conduzido por ter contra si ordem de captura definitiva (Trânsito em Julgado) por crime de Fazer Apologia ao Nazismo / Racismo (Inafiançável).',
+                shouldArrest: true,
+                reason: 'Sentença transitada em julgado por crime inafiançável (Racismo/Nazismo - Lei 7.716/89).'
+            },
+            {
+                id: 55,
+                person: 'Quitéria Chagas',
+                avatar: '👩‍🎤',
+                report: 'Abordada transportando no carro pessoal 500 santinhos e bandeira de candidato. Estava apenas dirigindo a caminho de sua residência.',
+                shouldArrest: false,
+                reason: 'Mera posse ou transporte individual de material de propaganda não constitui ilícito no ato.'
+            },
+            {
+                id: 56,
+                person: 'Rodrigo Santoro',
+                avatar: '👨‍💼',
+                report: 'Preso no momento em que derrubava e destruía a pontapés a mesa de trabalho dos mesários da 12ª Seção Eleitoral.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de dano e perturbação do serviço eleitoral.'
+            },
+            {
+                id: 57,
+                person: 'Sabrina Sato',
+                avatar: '👩‍💼',
+                report: 'Conduzida com Mandado de Prisão Temporária expedido no curso de inquérito sobre desvio de verbas públicas.',
+                shouldArrest: false,
+                reason: 'A Prisão Temporária não se enquadra nas exceções taxativas do Art. 236 do Código Eleitoral.'
+            },
+            {
+                id: 58,
+                person: 'Tiago Leifert',
+                avatar: '👨‍💼',
+                report: 'Surpreendido abordando eleitores na fila de votação e entregando "santinhos" no dia do pleito (Boca de Urna).',
+                shouldArrest: true,
+                reason: 'Flagrante delito de crime eleitoral de boca de urna (Art. 39, § 5º, II, Lei 9.504/97).'
+            },
+            {
+                id: 59,
+                person: 'Ullisses Guimarães',
+                avatar: '👴',
+                report: 'Vítima de denúncia anônima afirmando que ele praticou estelionato na semana passada. Policiais o abordaram na praça central sem nenhuma prova recente.',
+                shouldArrest: false,
+                reason: 'Mera denúncia anônima sem flagrante delito proíbe qualquer detenção.'
+            },
+            {
+                id: 60,
+                person: 'Viviane Araújo',
+                avatar: '👩‍🎤',
+                report: 'Detida em flagrante enquanto agredia fisicamente uma fiscal partidária no pátio do colégio eleitoral.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de lesão corporal no ato.'
+            },
+            {
+                id: 61,
+                person: 'Wilson Simonal',
+                avatar: '👨‍💼',
+                report: 'Conduzido por possuir ordem de prisão definitiva por Sentença Transitada em Julgado pelo crime de Receptação Simples (Fiançável).',
+                shouldArrest: false,
+                reason: 'Receptação simples é crime FIANÇÁVEL. A exceção exige que o crime seja INAFIANÇÁVEL.'
+            },
+            {
+                id: 62,
+                person: 'Xuxa Meneghel',
+                avatar: '👩‍💼',
+                report: 'Abordada após ser perseguida por fiscais eleitorais logo após derramar milhares de panfletos na porta da seção eleitoral no dia da eleição (derramamento de santinhos).',
+                shouldArrest: true,
+                reason: 'Flagrante delito por derramamento de material de propaganda no dia do pleito.'
+            },
+            {
+                id: 63,
+                person: 'Yasser Arafat',
+                avatar: '👴',
+                report: 'Conduzido em razão de Mandado de Prisão Preventiva expedido em processo por porte de arma de fogo de uso permitido.',
+                shouldArrest: false,
+                reason: 'Prisão Preventiva não pode ser cumprida no período de imunidade.'
+            },
+            {
+                id: 64,
+                person: 'Zico Arantes',
+                avatar: '🧔‍♂️',
+                report: 'Possui ordem de prisão por Sentença Condenatória Transitada em Julgado pelo crime de Latrocínio (Roubo seguido de Morte - Crime Hediondo e Inafiançável).',
+                shouldArrest: true,
+                reason: 'Condenação definitiva por crime hediondo e inafiançável. Exceção do Art. 236 autoriza a prisão.'
+            },
+            {
+                id: 65,
+                person: 'Arnaldo Cezar Coelho',
+                avatar: '👨‍💼',
+                report: 'Conduzido por estar com o título de eleitor cancelado tentando votar. Os mesários impediram o voto e chamaram a polícia.',
+                shouldArrest: false,
+                reason: 'Tentar votar com título cancelado sem fraude dolosa ou documento falso não constitui crime punível com prisão em flagrante. Apenas não vota.'
+            },
+            {
+                id: 66,
+                person: 'Bruna Marquezine',
+                avatar: '👩‍💼',
+                report: 'Surpreendida utilizando telefone celular dentro da cabine de votação e fotografando a tela da urna eletrônica no momento do voto.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de violação do sigilo do voto (Art. 312 do Código Eleitoral).'
+            },
+            {
+                id: 67,
+                person: 'Caetano Veloso',
+                avatar: '👴',
+                report: 'Consta no sistema Mandado de Prisão Civil por execução de alimentos (pensão) pendente de cumprimento.',
+                shouldArrest: false,
+                reason: 'Imunidade eleitoral impede a prisão civil por pensão alimentícia.'
+            },
+            {
+                id: 68,
+                person: 'Deborah Secco',
+                avatar: '👩‍💼',
+                report: 'Presa em flagrante delito enquanto efetuava disparos de arma de fogo para o alto nas proximidades da seção eleitoral para intimidar eleitores.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de disparo de arma de fogo e coação eleitoral.'
+            },
+            {
+                id: 69,
+                person: 'Evaristo Costa',
+                avatar: '👨‍💼',
+                report: 'Conduzido por policiais porque responde a inquérito por crime contra a honra instaurado a pedido de um candidato local.',
+                shouldArrest: false,
+                reason: 'Mero inquérito sem flagrante delito não autoriza detenção na semana eleitoral.'
+            },
+            {
+                id: 70,
+                person: 'Fernanda Montenegro',
+                avatar: '👵',
+                report: 'Conduzida por estar portando crachá com o nome e número de seu candidato enquanto atuava como fiscal partidária credenciada na seção.',
+                shouldArrest: false,
+                reason: 'Fiscais partidários credenciados têm o direito de usar crachá com nome e sigla do partido (Art. 39-A, § 3º, Lei 9.504/97). Atividade legal.'
+            },
+            {
+                id: 71,
+                person: 'Gal Costa',
+                avatar: '👩‍🎤',
+                report: 'Surpreendida oferecendo transporte gratuito em van particular para eleitores em troca de votos para sua chapa partidária no dia do pleito.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de transporte ilegal de eleitores (Lei 6.091/74 - Crime Eleitoral).'
+            },
+            {
+                id: 72,
+                person: 'Humberto Carrão',
+                avatar: '👨‍💼',
+                report: 'Conduzido sob ordem de Mandado de Prisão Preventiva decretado por crime de roubo.',
+                shouldArrest: false,
+                reason: 'Prisão Preventiva fica com a execução suspensa durante o período de garantia eleitoral.'
+            },
+            {
+                id: 73,
+                person: 'Isabeli Fontana',
+                avatar: '👩‍💼',
+                report: 'Pega em flagrante tentando votar duas vezes utilizando o documento de identidade de sua irmã gêmea.',
+                shouldArrest: true,
+                reason: 'Flagrante delito do crime de falsidade ideológica e estelionato eleitoral (Art. 309 do CE).'
+            },
+            {
+                id: 74,
+                person: 'João Gomes',
+                avatar: '🧔‍♂️',
+                report: 'Apresentado com Mandado de Prisão decorrente de Sentença Condenatória Transitada em Julgado pelo crime inafiançável de Ação de Grupos Armados contra o Estado Democrático.',
+                shouldArrest: true,
+                reason: 'Crime inafiançável por disposição constitucional (Art. 5º, XLIV, CF) com condenação transitada em julgado.'
+            },
+            {
+                id: 75,
+                person: 'Klara Castanho',
+                avatar: '👩‍🎓',
+                report: 'Vizinho acionou a PM alegando barulho excessivo em sua residência ontem à noite. A patrulha foi ao local hoje e não encontrou irregularidades.',
+                shouldArrest: false,
+                reason: 'Não há flagrante delito nem infração em andamento.'
+            },
+            {
+                id: 76,
+                person: 'Luan Santana',
+                avatar: '👨‍🎤',
+                report: 'Flagrado por agentes de trânsito dirigindo sob efeito severo de álcool e em zigue-zague na rua da seção eleitoral, quase atropelando pedestres.',
+                shouldArrest: true,
+                reason: 'Flagrante delito do crime de embriaguez ao volante (Art. 306 do CTB).'
+            },
+            {
+                id: 77,
+                person: 'Marisa Monte',
+                avatar: '👩‍🎤',
+                report: 'Conduzida por estar com Mandado de Prisão Temporária pendente expedido pela Vara Criminal.',
+                shouldArrest: false,
+                reason: 'A Prisão Temporária não autoriza a quebra da imunidade eleitoral.'
+            },
+            {
+                id: 78,
+                person: 'Ney Matogrosso',
+                avatar: '👴',
+                report: 'Preso por fiscais no exato momento em que pagava R$ 200 em dinheiro para um eleitor na saída do colégio em troca da abstenção.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de corrupção eleitoral (Art. 299 CE).'
+            },
+            {
+                id: 79,
+                person: 'Osmar Prado',
+                avatar: '👴',
+                report: 'Apresentado à polícia por estar devendo taxa do condomínio e ter sofrido ação judicial de cobrança civil.',
+                shouldArrest: false,
+                reason: 'Dívida civil comercial/condominial jamais gera prisão e muito menos em período eleitoral.'
+            },
+            {
+                id: 80,
+                person: 'Paolla Oliveira',
+                avatar: '👩‍💼',
+                report: 'Flagrada agredindo fisicamente e tomando o celular de um jornalista que cobria a movimentação na seção eleitoral.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de exercício arbitrário das próprias razões e lesão corporal.'
+            },
+            {
+                id: 81,
+                person: 'Galvão Bueno',
+                avatar: '👴',
+                report: 'Conduzido por ter contra si ordem de Prisão Preventiva em inquérito que apura ilícitos fiscais.',
+                shouldArrest: false,
+                reason: 'Prisão preventiva decretada não pode ser cumprida no período protegido.'
+            },
+            {
+                id: 82,
+                person: 'Regina Casé',
+                avatar: '👩‍💼',
+                report: 'Possui contra si Mandado de Prisão por Execução Definitiva (Trânsito em Julgado) pelo crime inafiançável de Feminicídio (Homicídio Qualificado).',
+                shouldArrest: true,
+                reason: 'Condenação definitiva por crime inafiançável/hediondo autoriza a imediata prisão.'
+            },
+            {
+                id: 83,
+                person: 'Seu Jorge',
+                avatar: '🧔‍♂️',
+                report: 'Abordado caminhando com camiseta com a bandeira do Brasil no dia da votação. Não estava distribuindo panfletos nem promovendo aglomeração.',
+                shouldArrest: false,
+                reason: 'A manifestação individual e silenciosa do eleitor por meio de símbolos ou cores é expressamente permitida pela Lei Eleitoral.'
+            },
+            {
+                id: 84,
+                person: 'Taís Araújo',
+                avatar: '👩‍💼',
+                report: 'Presa em flagrante enquanto tentava arrancar à força o livro de votação da mesa receptora e rasgar suas páginas.',
+                shouldArrest: true,
+                reason: 'Flagrante delito por crime contra o processo eleitoral e inutilização de documento público.'
+            },
+            {
+                id: 85,
+                person: 'Umberto Magnani',
+                avatar: '👴',
+                report: 'Policiais o conduziram porque seu nome constava como investigado em uma lista antiga de busca e apreensão de bens.',
+                shouldArrest: false,
+                reason: 'Mera ordem de busca de bens sem mandado de prisão ou flagrante não autoriza a prisão da pessoa.'
+            },
+            {
+                id: 86,
+                person: 'Vera Fischer',
+                avatar: '👵',
+                report: 'Surpreendida e contida no momento em que ateava fogo em cartazes de propaganda eleitoral fixados em local autorizado.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de crime de dano.'
+            },
+            {
+                id: 87,
+                person: 'William Bonner',
+                avatar: '👨‍💼',
+                report: 'Apresentado sob acusação de ter cometido calúnia em programa de rádio há três dias. Sem flagrante atual.',
+                shouldArrest: false,
+                reason: 'Fato corrido há três dias sem flagrante nem perseguição exige processo regular sem prisão cautelar.'
+            },
+            {
+                id: 88,
+                person: 'Xande de Pilares',
+                avatar: '🧔‍♂️',
+                report: 'Preso por guardas municipais logo após furtar a bolsa de uma mesária dentro da sala de votação.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de furto (Art. 302, I, CPP).'
+            },
+            {
+                id: 89,
+                person: 'Yudi Tamashiro',
+                avatar: '👨‍💼',
+                report: 'Possui ordem de Prisão Civil por falta de pagamento de pensão alimentícia decretada na semana anterior.',
+                shouldArrest: false,
+                reason: 'A prisão civil fica suspensa no período de imunidade do Art. 236 do CE.'
+            },
+            {
+                id: 90,
+                person: 'Zezé Di Camargo',
+                avatar: '👨‍💼',
+                report: 'Detido em flagrante delito enquanto usava um megafone em cima de um veículo para fazer propaganda eleitoral ao lado da fila de eleitores.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de propaganda irregular por sinal sonoro no dia da eleição.'
+            },
+            {
+                id: 91,
+                person: 'Ana Hickmann',
+                avatar: '👩‍💼',
+                report: 'Conduzida por estar com Mandado de Prisão Preventiva expedido há 15 dias por estelionato.',
+                shouldArrest: false,
+                reason: 'Prisão preventiva suspensa em razão da imunidade eleitoral.'
+            },
+            {
+                id: 92,
+                person: 'Belo Pires',
+                avatar: '🧔‍♂️',
+                report: 'Possui Mandado de Prisão Definitiva (Trânsito em Julgado) pelo crime inafiançável de Associação para o Tráfico com Emprego de Armas de Fogo.',
+                shouldArrest: true,
+                reason: 'Sentença definitiva por crime inafiançável e equiparado a hediondo.'
+            },
+            {
+                id: 93,
+                person: 'Cris Vianna',
+                avatar: '👩‍💼',
+                report: 'Abordada por portar botton pequeno de seu candidato na camisa ao comparecer para votar. Não conversou nem pediu votos a ninguém.',
+                shouldArrest: false,
+                reason: 'O uso de broches ou bottons individuais e silenciosos é expressamente permitido pela legislação eleitoral.'
+            },
+            {
+                id: 94,
+                person: 'Dira Paes',
+                avatar: '👩‍💼',
+                report: 'Detida em flagrante delito no momento em que pagava combustíveis em um posto para eleitores em troca do voto em seu candidato.',
+                shouldArrest: true,
+                reason: 'Flagrante delito de compra de voto / corrupção eleitoral.'
+            },
+            {
+                id: 95,
+                person: 'Emílio Dantas',
+                avatar: '👨‍💼',
+                report: 'Conduzido por ter Mandado de Prisão Temporária expedido em investigação de lavagem de dinheiro.',
+                shouldArrest: false,
+                reason: 'A prisão temporária fica com a execução postergada para após o período da imunidade.'
+            },
+            {
+                id: 96,
+                person: 'Fátima Bernardes',
+                avatar: '👩‍💼',
+                report: 'Abordada e presa em flagrante por ameaçar fisicamente um eleitor idoso para tentar forçá-lo a votar em determinado número.',
+                shouldArrest: true,
+                reason: 'Flagrante delito por coação eleitoral e ameaça.'
+            },
+            {
+                id: 97,
+                person: 'Gerson Brenner',
+                avatar: '👴',
+                report: 'Conduzido por ter em seu desfavor Mandado de Prisão Preventiva por crime de apropriação indébita.',
+                shouldArrest: false,
+                reason: 'A prisão preventiva não pode ser cumprida no período do Art. 236 do CE.'
+            },
+            {
+                id: 98,
+                person: 'Henri Castelli',
+                avatar: '👨‍💼',
+                report: 'Preso por guarnição da PM logo após ser perseguido continuamente por populares depois de roubar a correntinha de ouro de um eleitor.',
+                shouldArrest: true,
+                reason: 'Flagrante impróprio decorrente de perseguição imediata (Art. 302, III, CPP).'
+            },
+            {
+                id: 99,
+                person: 'Isabel Fillardis',
+                avatar: '👩‍💼',
+                report: 'Denunciada por um fiscal sob alegação de que estaria fazendo reunião em sua casa no dia anterior. Sem flagrante ou mandado.',
+                shouldArrest: false,
+                reason: 'Alegação de fato passado sem situação de flagrante não permite a prisão.'
+            },
+            {
+                id: 100,
+                person: 'Jorge Aragão',
+                avatar: '👴',
+                report: 'Conduzido por possuir Mandado de Prisão por Execução Definitiva (Trânsito em Julgado) pelo crime inafiançável de Racismo (Art. 20 da Lei 7.716/89).',
+                shouldArrest: true,
+                reason: 'Sentença condenatória definitiva transitada em julgado por crime inafiançável (Racismo). Exceção do Art. 236 do CE.'
             }
         ];
 
-        // Generate remaining 90 procedural scenarios dynamically to fulfill exactly 100 cases
-        const NAMES = ['Adriano', 'Beatriz', 'Caio', 'Daniela', 'Eder', 'Fabiana', 'Gabriel', 'Helena', 'Igor', 'Joana', 'Kléber', 'Leticia', 'Maurício', 'Nadia', 'Otávio', 'Patrícia', 'Quintino', 'Rafaela', 'Samuel', 'Tatiana', 'Ubiratan', 'Vanessa', 'Wagner', 'Xavier', 'Yara', 'Zaqueu'];
-        const SURNAMES = ['Oliveira', 'Martins', 'Ferreira', 'Lima', 'Souza', 'Ribeiro', 'Carvalho', 'Gomes', 'Barbosa', 'Mendes', 'Teixeira', 'Moreira', 'Nascimento', 'Vieira', 'Cardoso'];
-        const EMOJIS = ['👨‍💼', '👩‍💼', '🧔‍♂️', '👨‍🔧', '👩‍🔬', '👨‍🎓', '🕵️‍♂️', '👵', '👴', '👨‍🌾'];
-
-        for (let i = 11; i <= 100; i++) {
-            const name = `${NAMES[i % NAMES.length]} ${SURNAMES[i % SURNAMES.length]}`;
-            const avatar = EMOJIS[i % EMOJIS.length];
-            const typeCategory = i % 5;
-
-            if (typeCategory === 0) {
-                // Flagrante delito
-                SCENARIOS.push({
-                    id: i,
-                    person: name,
-                    avatar: avatar,
-                    report: `A equipe de patrulhamento prendeu o indivíduo após este ser surpreendido pichando a porta da seção eleitoral e empurrando os mesários no momento em que as urnas eram entregues.`,
-                    shouldArrest: true,
-                    reason: 'Prisão em flagrante delito no momento da prática do ilícito. Exceção permitida pelo Art. 236 do Código Eleitoral.'
-                });
-            } else if (typeCategory === 1) {
-                // Mandado de prisão preventiva antigo (LIBERAR)
-                SCENARIOS.push({
-                    id: i,
-                    person: name,
-                    avatar: avatar,
-                    report: `Foi abordado durante fiscalização de trânsito. A checagem do sistema BNMP apontou um mandado de prisão preventiva em aberto por crime de estelionato expedido há 5 meses.`,
-                    shouldArrest: false,
-                    reason: 'Mandados de prisão preventiva não podem ser executados durante o período de imunidade eleitoral. Deve ser liberado.'
-                });
-            } else if (typeCategory === 2) {
-                // Prisão Civil Pensão Alimentícia (LIBERAR)
-                SCENARIOS.push({
-                    id: i,
-                    person: name,
-                    avatar: avatar,
-                    report: `A Polícia Militar conduziu o cidadão após localizar mandado judicial de prisão civil decorrente do não pagamento de pensão alimentícia nos últimos quatro meses.`,
-                    shouldArrest: false,
-                    reason: 'A imunidade eleitoral impede a execução de prisões civis (inclusive pensão alimentícia) no período do Art. 236.'
-                });
-            } else if (typeCategory === 3) {
-                // Crime Inafiançável com Condenação Definitiva (PRENDER)
-                SCENARIOS.push({
-                    id: i,
-                    person: name,
-                    avatar: avatar,
-                    report: `O abordado possui contra si ordem de captura definitiva expedida após sentença condenatória transitada em julgado pelo crime hediondo de tráfico internacional de armas.`,
-                    shouldArrest: true,
-                    reason: 'Sentença condenatória por crime inafiançável é uma das 3 exceções expressas da lei que autorizam a prisão.'
-                });
-            } else {
-                // Denúncia sem flagrante / Suspeita (LIBERAR)
-                SCENARIOS.push({
-                    id: i,
-                    person: name,
-                    avatar: avatar,
-                    report: `Vizinhos chamaram a viatura afirmando que o cidadão estaria guardando mercadorias roubadas em sua garagem. Os agentes foram ao local mas não encontraram nenhum produto ou prova no momento.`,
-                    shouldArrest: false,
-                    reason: 'Ausência de flagrante ou ordem condenatória inafiançável. A garantia de imunidade proíbe a prisão fundamentada apenas em denúncias.'
-                });
-            }
-        }
-
         // Game State Variables
-        let gameState = 'START'; // 'START', 'PLAYING', 'GAMEOVER'
+        let gameState = 'START';
         let score = 0;
         let highscore = localStorage.getItem('delegado_eleitoral_highscore') || 0;
         let lives = 3;
         let currentCaseIndex = 0;
         let currentScenario = null;
-        let lastActionStamp = null; // { text: 'PRESO'|'LIBERADO', color: string, timer: number }
+        let lastActionStamp = null;
 
         document.getElementById('highscore-display').innerText = highscore;
 
@@ -539,12 +1190,11 @@
             clearTimeout(banner._timer);
             banner._timer = setTimeout(() => {
                 banner.classList.add('opacity-0', '-translate-y-2');
-            }, 4500);
+            }, 5500);
         }
 
         function loadCase(index) {
             if (index >= SCENARIOS.length) {
-                // Loop back or finish
                 index = 0;
             }
             currentCaseIndex = index;
@@ -577,7 +1227,7 @@
                 
                 showVerdictBanner(
                     true, 
-                    userChoseArrest ? 'PRISÃO LEGAL APLICADA' : 'LIBERAÇÃO LEGAL CONFIRMADA',
+                    userChoseArrest ? 'DECISÃO CORRETA: PRISÃO LEGAL' : 'DECISÃO CORRETA: LIBERAÇÃO LEGAL',
                     currentScenario.reason
                 );
             } else {
@@ -586,8 +1236,8 @@
                 updateLivesDisplay();
 
                 const errorTitle = userChoseArrest 
-                    ? 'PRISÃO ILEGAL! (VIOLAÇÃO DO ART. 236)' 
-                    : 'OMISSÃO FUNCIONAL! (DEVER DE PRENDER)';
+                    ? 'ERRO: PRISÃO ILEGAL! (VIOLAÇÃO DO ART. 236)' 
+                    : 'ERRO: OMISSÃO FUNCIONAL! (DEVER DE PRENDER)';
 
                 showVerdictBanner(
                     false,
@@ -596,7 +1246,7 @@
                 );
 
                 if (lives <= 0) {
-                    setTimeout(() => triggerGameOver(), 1000);
+                    setTimeout(() => triggerGameOver(), 1200);
                 }
             }
 
@@ -609,35 +1259,35 @@
         }
 
         function drawDeskAndEnvironment() {
-            // Background Desk Room
+            // Background Room
             ctx.fillStyle = '#070c18';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Wall Banner Line
+            // Wall Trim Line
             ctx.fillStyle = 'rgba(212, 175, 55, 0.08)';
             ctx.fillRect(0, 0, canvas.width, 70);
 
-            // Police Badge Seal Graphic
+            // Police Badge Watermark
             ctx.font = '55px Arial';
             ctx.textAlign = 'center';
             ctx.globalAlpha = 0.15;
             ctx.fillText('⚖️', canvas.width / 2, 52);
             ctx.globalAlpha = 1.0;
 
-            // Police Desk Top
+            // Police Desk
             const deskY = 250;
             ctx.fillStyle = '#0f172a';
             ctx.fillRect(0, deskY, canvas.width, canvas.height - deskY);
 
-            // Desk Border Highlight
+            // Desk Border Line
             ctx.fillStyle = '#1e293b';
             ctx.fillRect(0, deskY, canvas.width, 5);
 
-            // Paper Incident Document Pad
+            // Paper Document Pad
             const docX = 220;
-            const docY = 110;
+            const docY = 100;
             const docW = 450;
-            const docH = 350;
+            const docH = 360;
 
             ctx.fillStyle = '#1e293b';
             ctx.roundRect(docX, docY, docW, docH, 12);
@@ -646,7 +1296,7 @@
             ctx.lineWidth = 2;
             ctx.stroke();
 
-            // Paper Clip Visual Effect
+            // Paper Clip Visual
             ctx.fillStyle = '#64748b';
             ctx.roundRect(docX + 20, docY - 10, 40, 20, 4);
             ctx.fill();
@@ -673,32 +1323,32 @@
             ctx.textBaseline = 'middle';
             ctx.fillText(currentScenario.avatar, currentScenario.x, currentScenario.y);
             
-            // Avatar Label
+            // Avatar Subtitle
             ctx.fillStyle = '#94a3b8';
             ctx.font = '700 12px Inter, sans-serif';
-            ctx.fillText('ENVOLVIDO', currentScenario.x, currentScenario.y + 60);
+            ctx.fillText('CONDUZIDO', currentScenario.x, currentScenario.y + 60);
             ctx.restore();
 
-            // Render Incident Document Details
+            // Render Incident Document Text
             if (currentScenario.state === 'INSPECTING' || currentScenario.state === 'LEAVING') {
                 const docX = 240;
-                let docY = 135;
+                let docY = 125;
 
                 // Document Header
                 ctx.fillStyle = '#fbbf24';
                 ctx.font = '900 13px Inter, sans-serif';
                 ctx.textAlign = 'left';
-                ctx.fillText('RELATÓRIO DE OCORRÊNCIA POLICIAL', docX, docY);
+                ctx.fillText('POLÍCIA CIVIL - PLANTÃO ELEITORAL', docX, docY);
 
-                // Subtitle Line
+                // Subtitle
                 ctx.fillStyle = '#64748b';
                 ctx.font = '600 11px Inter, sans-serif';
-                ctx.fillText(`AUTOS Nº 2026/ELEIT-${currentScenario.id.toString().padStart(3, '0')}`, docX, docY + 18);
+                ctx.fillText(`RELATÓRIO DE OCORRÊNCIA Nº 2026/ELEIT-${currentScenario.id.toString().padStart(3, '0')}`, docX, docY + 18);
 
-                // Envolvido
+                // Conduzido Name
                 ctx.fillStyle = '#f1f5f9';
                 ctx.font = '800 13px Inter, sans-serif';
-                ctx.fillText(`CONDUZIDO: ${currentScenario.person.toUpperCase()}`, docX, docY + 42);
+                ctx.fillText(`CONDUZIDO(A): ${currentScenario.person.toUpperCase()}`, docX, docY + 42);
 
                 // Divider Line
                 ctx.strokeStyle = '#334155';
@@ -708,7 +1358,7 @@
                 ctx.lineTo(docX + 410, docY + 52);
                 ctx.stroke();
 
-                // Depoimento / Fatos (Natural Language wrapping)
+                // Report Body Text (Word Wrapping)
                 ctx.fillStyle = '#cbd5e1';
                 ctx.font = '500 12px Inter, sans-serif';
                 
@@ -733,13 +1383,13 @@
                 }
                 ctx.fillText(line, docX, lineY);
 
-                // Prompt at the bottom
+                // Bottom Call to Action
                 ctx.fillStyle = '#fbbf24';
                 ctx.font = '800 11px Inter, sans-serif';
-                ctx.fillText('COMO DELEGADO, DECIDA: PRENDER OU LIBERAR?', docX, docY + 280);
+                ctx.fillText('DELEGADO, QUAL É SUA DECISÃO? [ PRENDER ] OU [ LIBERAR ]', docX, docY + 295);
             }
 
-            // Render Stamp Animation overlay
+            // Render Stamp Overlay
             if (lastActionStamp && lastActionStamp.timer > 0) {
                 lastActionStamp.timer--;
                 ctx.save();
@@ -748,7 +1398,7 @@
                 ctx.fillStyle = lastActionStamp.color;
                 ctx.strokeStyle = '#ffffff';
                 ctx.lineWidth = 3;
-                ctx.font = '900 32px Inter, sans-serif';
+                ctx.font = '900 30px Inter, sans-serif';
                 ctx.textAlign = 'center';
                 ctx.strokeText(lastActionStamp.text, 0, 0);
                 ctx.fillText(lastActionStamp.text, 0, 0);
@@ -790,14 +1440,14 @@
             loadCase(0);
         }
 
-        // Keyboard & Button Interactions
+        // Keyboard & Button Listeners
         window.addEventListener('keydown', (e) => {
             sound.init();
             if (gameState === 'PLAYING') {
                 if (e.key === ' ' || e.key === 'a' || e.key === 'A') {
-                    processDecision(true); // ARREST
+                    processDecision(true);
                 } else if (e.key === 'Enter' || e.key === 'd' || e.key === 'D') {
-                    processDecision(false); // RELEASE
+                    processDecision(false);
                 }
             } else if (e.key === 'Enter') {
                 resetGame();
@@ -824,13 +1474,13 @@
             resetGame();
         });
 
-        // Modal Rules Controls
+        // Rules Modal Handlers
         const rulesModal = document.getElementById('rules-modal');
         document.getElementById('btn-rules').addEventListener('click', () => rulesModal.classList.remove('hidden'));
         document.getElementById('btn-close-modal').addEventListener('click', () => rulesModal.classList.add('hidden'));
         document.getElementById('btn-modal-ok').addEventListener('click', () => rulesModal.classList.add('hidden'));
 
-        // Main Render Loop
+        // Main Loop
         function loop() {
             updateAndDraw();
             requestAnimationFrame(loop);
